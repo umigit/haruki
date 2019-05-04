@@ -1,65 +1,66 @@
 <template>
   <section class="container">
-    <div>
-      <app-logo/>
-      <h1 class="title">
-        haruki
-      </h1>
-      <h2 class="subtitle">
-        Haruki's Page
-      </h2>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          class="button--green">Documentation</a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          class="button--grey">GitHub</a>
+    <div class="main">
+      <div class="articles">
+        <div v-for="article in articles" :key="article.sys.id" class="article">
+          <h2>{{article.fields.title}}</h2>
+          <img :src="article.fields.images[0].fields.file.url" class="article-image"/>
+          <div v-html="article.fields.body" class="article-body"></div>
+        </div>
       </div>
     </div>
   </section>
 </template>
 
 <script>
-import AppLogo from '~/components/AppLogo.vue'
+import { documentToHtmlString } from '@contentful/rich-text-html-renderer'
+import client from '~/plugins/contentful'
 
 export default {
-  components: {
-    AppLogo
-  }
+  async asyncData() {
+    return await client.getEntries()
+      .then(entries => {
+        let author
+        let articles = []
+        let books = []
+
+        entries.items.forEach(item => {
+          const id = item.sys.contentType.sys.id
+          if (id === 'article') {
+            item.fields.body = documentToHtmlString(item.fields.body)
+            articles.push(item)
+          }
+          else if (id === 'book') {
+            books.push(item)
+          }
+          else if (id === 'author') {
+            author = item
+          }
+        })
+        console.log(entries.items[0].sys.contentType.sys.id)
+        return {
+          author: author,
+          articles: articles,
+          books: books,
+        }
+      })
+  },
 }
 </script>
 
 <style>
 .container {
   min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
 }
 
-.title {
-  font-family: "Quicksand", "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; /* 1 */
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
+.article {
+  width: 600px;
+  border: 1px solid gray;
+  padding: 20px;
 }
 
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
+.article-image {
+  width: 100%;
 }
 </style>
 
