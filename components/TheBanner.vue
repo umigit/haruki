@@ -50,18 +50,21 @@ export default {
 .carousel-item {
   background-color: rgba(0,0,0,0.8);
   width: 100%;
-  height: 300px;
-  padding: 20px 80px;
+  min-height: 300px;
+  max-height: 400px;
+  padding: 40px 80px;
   display: flex;
 }
 
 .book-image {
   height: 100%;
+  object-fit: contain;
 }
 
 .book-content {
   margin-left: 40px;
   color: white;
+  overflow: auto;
 }
 
 .book-content > a {
@@ -85,6 +88,18 @@ export default {
 
 .VueCarousel-navigation-prev {
   transform: translate(0%, -50%) !important;
+}
+
+@media screen and (max-width: 896px) {
+  .book-image {
+    height: 200px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .banner {
+    display: none;
+  }
 }
 </style>
 

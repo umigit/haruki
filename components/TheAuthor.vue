@@ -1,8 +1,10 @@
 <template>
   <div class="author">
     <img :src="author.fields.image.fields.file.url" class="author-image"/>
-    <h2>{{author.fields.name}}</h2>
-    <p>{{author.fields.summary}}</p>
+    <div class="author-info">
+      <h2>{{author.fields.name}}</h2>
+      <p>{{author.fields.summary}}</p>
+    </div>
   </div>
 </template>
 
@@ -22,10 +24,42 @@ export default {
 
 }
 
-.author > h2 {
+.author-info > h2 {
   text-align: center;
 }
 .author-image {
   width: 100%;
+}
+
+@media screen and (max-width: 896px) {
+  .author {
+    width: 100%;
+    display: flex;
+    align-items: center;
+  }
+
+  .author-info > h2 {
+    font-size: 20px;
+  }
+
+  .author-image {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    object-position: center center;
+  }
+
+  .author-info {
+    margin-left: 20px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .author-image {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    object-position: center center;
+  }
 }
 </style>
