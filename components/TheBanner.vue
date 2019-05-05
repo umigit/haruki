@@ -2,7 +2,7 @@
   <div class="banner">
     <carousel :perPage=1 :autoplay=true :autoplayTimeout=3000 :loop=true :navigationEnabled=true paginationPosition="bottom-overlay" paginationActiveColor="#ffffff" paginationColor="#666666" class="carousel">
       <slide class="carousel-item first">
-        <img :src="books[0].fields.image.fields.file.url" class="book-image"/>
+        <img :src="books[0].fields.image.fields.file.url" class="carousel-book-image"/>
         <div class="book-content">
           <h2>{{books[0].fields.title}}</h2>
           <h5>{{books[0].fields.author}}</h5>
@@ -11,7 +11,7 @@
         </div>
       </slide>
       <slide class="carousel-item second">
-        <img :src="books[1].fields.image.fields.file.url" class="book-image"/>
+        <img :src="books[1].fields.image.fields.file.url" class="carousel-book-image"/>
         <div class="book-content">
           <h2>{{books[1].fields.title}}</h2>
           <h5>{{books[1].fields.author}}</h5>
@@ -20,7 +20,7 @@
         </div>
       </slide>
       <slide class="carousel-item second">
-        <img :src="books[2].fields.image.fields.file.url" class="book-image"/>
+        <img :src="books[2].fields.image.fields.file.url" class="carousel-book-image"/>
         <div class="book-content">
           <h2>{{books[2].fields.title}}</h2>
           <h5>{{books[2].fields.author}}</h5>
@@ -56,8 +56,8 @@ export default {
   display: flex;
 }
 
-.book-image {
-  height: 100%;
+.carousel-book-image {
+  width: 200px;
   object-fit: contain;
 }
 
@@ -91,8 +91,8 @@ export default {
 }
 
 @media screen and (max-width: 896px) {
-  .book-image {
-    height: 200px;
+  .carousel-book-image {
+    width: 150px;
   }
 }
 
