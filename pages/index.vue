@@ -100,11 +100,17 @@ export default {
 }
 .article {
   background-color: white;
+  margin-bottom: 30px;
   padding: 20px;
 }
 
 .article-image {
   width: 100%;
+  margin-top: 20px;
+}
+
+.article-body {
+  margin-top: 20px;
 }
 
 @media screen and (max-width: 1024px) {
