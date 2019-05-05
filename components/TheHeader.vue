@@ -22,6 +22,7 @@ header {
 
 .header-content {
   width: 1020px;
+  height: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -47,6 +48,41 @@ h1 {
 
 .nuxt-link-exact-active {
   border-bottom: 3px solid white;
+}
+
+@media screen and (max-width: 1024px) {
+  .header-content {
+    width: 800px;
+  }
+}
+
+@media screen and (max-width: 896px) {
+  .title {
+    display: none;
+  }
+
+  .links {
+    margin-right: 0;
+  }
+
+  .header-content {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  header {
+    height: 60px;
+  }
+
+  .header-content {
+    width: 100%;
+  }
+
+  .links > a {
+    font-size: 18px;
+  }
 }
 </style>
 

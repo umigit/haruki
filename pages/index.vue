@@ -106,5 +106,41 @@ export default {
 .article-image {
   width: 100%;
 }
+
+@media screen and (max-width: 1024px) {
+  .main-content {
+    width: 800px;
+  }
+}
+
+@media screen and (max-width: 896px) {
+  .main-content {
+    width: 100%;
+  }
+
+  .blog-content {
+    flex-direction: column-reverse;
+  }
+
+  .articles {
+    margin-right: 0;
+    margin-top: 20px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .container {
+    padding-top: 60px;
+  }
+
+  .main-content {
+    width: 100%;
+  }
+
+  .articles {
+    margin-right: 0;
+    margin-top: 20px;
+  }
+}
 </style>
 
