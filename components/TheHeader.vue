@@ -44,5 +44,9 @@ h1 {
   text-decoration: none;
   padding: 5px 10px;
 }
+
+.nuxt-link-exact-active {
+  border-bottom: 3px solid white;
+}
 </style>
 
