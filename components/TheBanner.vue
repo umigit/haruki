@@ -58,7 +58,6 @@ export default {
 
 .book-image {
   height: 100%;
-  max-height: 400px;
   object-fit: contain;
 }
 
@@ -92,8 +91,8 @@ export default {
 }
 
 @media screen and (max-width: 896px) {
-  .banner {
-
+  .book-image {
+    height: 200px;
   }
 }
 
