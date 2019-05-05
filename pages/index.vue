@@ -54,7 +54,7 @@ export default {
             author = item
           }
         })
-        console.log(entries.items[0].sys.contentType.sys.id)
+
         return {
           author: author,
           articles: articles,
