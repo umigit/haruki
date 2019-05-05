@@ -54,7 +54,7 @@ export default {
             author = item
           }
         })
-        console.log(entries.items[0].sys.contentType.sys.id)
+
         return {
           author: author,
           articles: articles,
@@ -100,11 +100,17 @@ export default {
 }
 .article {
   background-color: white;
+  margin-bottom: 30px;
   padding: 20px;
 }
 
 .article-image {
   width: 100%;
+  margin-top: 20px;
+}
+
+.article-body {
+  margin-top: 20px;
 }
 
 @media screen and (max-width: 1024px) {
@@ -135,6 +141,10 @@ export default {
 
   .main-content {
     width: 100%;
+  }
+
+  .blog-content {
+    margin-top: 0;
   }
 
   .articles {

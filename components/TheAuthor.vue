@@ -45,12 +45,13 @@ export default {
   .author-image {
     width: 200px;
     height: 200px;
-    object-fit: cover;
+    object-fit: contain;
     object-position: center center;
   }
 
   .author-info {
     margin-left: 20px;
+    flex: 1;
   }
 }
 
@@ -58,7 +59,7 @@ export default {
   .author-image {
     width: 100px;
     height: 100px;
-    object-fit: cover;
+    object-fit: contain;
     object-position: center center;
   }
 }
