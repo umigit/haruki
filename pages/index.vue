@@ -137,6 +137,10 @@ export default {
     width: 100%;
   }
 
+  .blog-content {
+    margin-top: 0;
+  }
+
   .articles {
     margin-right: 0;
     margin-top: 20px;
