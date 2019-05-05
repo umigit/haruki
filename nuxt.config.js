@@ -1,9 +1,10 @@
 module.exports = {
+  mode: 'spa',
   /*
   ** Headers of the page
   */
   head: {
-    title: 'haruki',
+    title: 'Haruki',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -20,6 +21,12 @@ module.exports = {
   /*
   ** Build configuration
   */
+  plugins: [
+    '~/plugins/contentful'
+  ],
+  modules: [
+    '@nuxtjs/dotenv',
+  ],
   build: {
     /*
     ** Run ESLint on save
