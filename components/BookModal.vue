@@ -1,0 +1,164 @@
+<template>
+  <div class="modal">
+    <div class="modal-mask" @click="$emit('close')">
+      <div class="modal-body" @click.stop>
+        <button @click="$emit('close')" class="modal-close-button">×</button>
+        <div class="modal-content-wrapper">
+          <div class="modal-book-title-small">
+              <h2>{{item.fields.title}}</h2>
+              <h5>{{item.fields.author}}</h5>
+          </div>
+          <div class="modal-image-wrapper">
+            <img :src="item.fields.image.fields.file.url" class="modal-book-image"/>
+            <a :href="item.fields.link">Amazonで開く</a>
+          </div>
+          <div class="modal-book-content">
+            <div class="modal-book-title-big">
+              <h2>{{item.fields.title}}</h2>
+              <h5>{{item.fields.author}}</h5>
+            </div>
+            <div class="modal-book-detail">{{item.fields.detail}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  props: {
+    item: Object,
+  }
+}
+</script>
+
+<style>
+.modal-mask {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  background-color: rgba(0,0,0,0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.modal-body {
+  background-color: #fff;
+  width: 800px;
+  padding: 40px;
+  position: relative;
+}
+
+.modal-close-button {
+  background-color: #fff;
+  border: none;
+  font-size: 30px;
+  outline: 0;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+
+.modal-content-wrapper {
+  height: 100%;
+  display: flex;
+}
+
+.modal-image-wrapper {
+  text-align: center;
+}
+
+.modal-book-image {
+  max-height: 300px;
+  margin: 20px;
+}
+
+.modal-book-content {
+  margin-left: 20px;
+}
+
+.modal-book-content > h5 {
+  margin-top: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid gray;
+}
+
+.modal-book-title-small {
+    display: none;
+}
+
+.modal-book-title-small > h2 {
+    font-size: 16px;
+}
+
+.modal-book-title-small > h5 {
+  margin-top: 4px;
+  font-size: 12px;
+}
+
+.modal-book-detail {
+  margin-top: 30px;
+}
+
+@media screen and (max-width: 1024px) {
+
+}
+
+@media screen and (max-width: 896px) {
+  .modal-body {
+    width: 100%;
+  }
+
+  .modal-book-image {
+    max-height: 180px;
+    margin: 10px;
+  }
+
+  .modal-book-title-big {
+    display: block;
+  }
+
+  .modal-book-title-small {
+    display: none;
+  }
+
+
+}
+
+@media screen and (max-width: 480px) {
+  .modal-mask {
+    padding: 10px;
+  }
+
+  .modal-content-wrapper {
+    flex-direction: column;
+    justify-content: center;
+  }
+  .modal-book-title-big {
+    display: none;
+  }
+
+  .modal-book-title-small {
+    display: block;
+  }
+
+  .modal-book-content {
+    margin-left: 0;
+    font-size: 10px;
+  }
+
+  .modal-book-detail {
+    margin-top: 11px;
+  }
+
+  .modal-image-wrapper > a {
+    display: block;
+  }
+}
+</style>

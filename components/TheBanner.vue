@@ -1,31 +1,13 @@
 <template>
   <div class="banner">
     <carousel :perPage=1 :autoplay=true :autoplayTimeout=3000 :loop=true :navigationEnabled=true paginationPosition="bottom-overlay" paginationActiveColor="#ffffff" paginationColor="#666666" class="carousel">
-      <slide class="carousel-item first">
-        <img :src="books[0].fields.image.fields.file.url" class="carousel-book-image"/>
+      <slide v-for="book in books" :key="book.sys.id" class="carousel-item">
+        <img :src="book.fields.image.fields.file.url" class="carousel-book-image"/>
         <div class="book-content">
-          <h2>{{books[0].fields.title}}</h2>
-          <h5>{{books[0].fields.author}}</h5>
-          <div class="book-detail">{{books[0].fields.detail}}</div>
-          <a :href="books[0].fields.link">Amazonで開く</a>
-        </div>
-      </slide>
-      <slide class="carousel-item second">
-        <img :src="books[1].fields.image.fields.file.url" class="carousel-book-image"/>
-        <div class="book-content">
-          <h2>{{books[1].fields.title}}</h2>
-          <h5>{{books[1].fields.author}}</h5>
-          <div class="book-detail">{{books[1].fields.detail}}</div>
-          <a :href="books[1].fields.link">Amazonで開く</a>
-        </div>
-      </slide>
-      <slide class="carousel-item second">
-        <img :src="books[2].fields.image.fields.file.url" class="carousel-book-image"/>
-        <div class="book-content">
-          <h2>{{books[2].fields.title}}</h2>
-          <h5>{{books[2].fields.author}}</h5>
-          <div class="book-detail">{{books[2].fields.detail}}</div>
-          <a :href="books[2].fields.link">Amazonで開く</a>
+          <h2>{{book.fields.title}}</h2>
+          <h5>{{book.fields.author}}</h5>
+          <div class="book-detail">{{book.fields.detail}}</div>
+          <a :href="book.fields.link">Amazonで開く</a>
         </div>
       </slide>
     </carousel>
