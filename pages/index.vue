@@ -3,7 +3,7 @@
     <TheHeader/>
     <div class="main">
       <div class="main-content">
-        <TheBanner :books="books"/>
+        <TheBanner :books="banner"/>
         <div class="blog-content">
           <div class="articles">
             <div v-for="article in articles" :key="article.sys.id" class="article">
@@ -35,14 +35,16 @@ export default {
     TheAuthor,
   },
   async asyncData() {
-    return await client.getEntries()
+    return await client.getEntries({ order: '-sys.createdAt' })
       .then(entries => {
         let author
+        let banner
         let articles = []
         let books = []
 
         entries.items.forEach(item => {
           const id = item.sys.contentType.sys.id
+
           if (id === 'article') {
             item.fields.body = documentToHtmlString(item.fields.body)
             articles.push(item)
@@ -53,10 +55,14 @@ export default {
           else if (id === 'author') {
             author = item
           }
+          else if (id === 'banner') {
+            banner = item.fields.book
+          }
         })
 
         return {
           author: author,
+          banner: banner,
           articles: articles,
           books: books,
         }
@@ -139,6 +145,9 @@ export default {
     padding-top: 60px;
   }
 
+  .main {
+    padding: 10px;
+  }
   .main-content {
     width: 100%;
   }
@@ -150,6 +159,14 @@ export default {
   .articles {
     margin-right: 0;
     margin-top: 20px;
+  }
+
+  h2 {
+    font-size: 16px;
+  }
+
+  p {
+    font-size: 11px;
   }
 }
 </style>

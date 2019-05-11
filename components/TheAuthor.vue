@@ -38,10 +38,6 @@ export default {
     align-items: center;
   }
 
-  .author-info > h2 {
-    font-size: 20px;
-  }
-
   .author-image {
     width: 200px;
     height: 200px;

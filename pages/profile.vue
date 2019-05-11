@@ -14,6 +14,15 @@ export default {
 </script>
 
 <style>
+@media screen and (max-width: 1024px) {
 
+}
+
+@media screen and (max-width: 896px) {
+
+}
+
+@media screen and (max-width: 480px) {
+}
 </style>
 
