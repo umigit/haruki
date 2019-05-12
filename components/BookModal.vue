@@ -4,18 +4,18 @@
       <div class="modal-body" @click.stop>
         <button @click="$emit('close')" class="modal-close-button">×</button>
         <div class="modal-content-wrapper">
-          <div class="modal-book-title-small">
-              <h2>{{item.fields.title}}</h2>
-              <h5>{{item.fields.author}}</h5>
+          <div class="modal-book-info-small">
+              <h2 class="modal-book-title-small">{{item.fields.title}}</h2>
+              <h5 class="modal-book-author-small">{{item.fields.author}}</h5>
           </div>
           <div class="modal-image-wrapper">
             <img :src="item.fields.image.fields.file.url" class="modal-book-image"/>
             <a :href="item.fields.link">Amazonで開く</a>
           </div>
           <div class="modal-book-content">
-            <div class="modal-book-title-big">
-              <h2>{{item.fields.title}}</h2>
-              <h5>{{item.fields.author}}</h5>
+            <div class="modal-book-info-big">
+              <h2 class="modal-book-title-big">{{item.fields.title}}</h2>
+              <h5 class="modal-book-author-big">{{item.fields.author}}</h5>
             </div>
             <div class="modal-book-detail">{{item.fields.detail}}</div>
           </div>
@@ -83,26 +83,27 @@ export default {
   margin-left: 20px;
 }
 
-.modal-book-title-big > h5 {
+.modal-book-author-big {
+  color: #000;
   margin-top: 10px;
   padding-bottom: 10px;
   border-bottom: 1px solid gray;
 }
 
-.modal-book-title-big > h2, h5 {
+.modal-book-title-big {
   color: #000;
 }
 
-.modal-book-title-small {
+.modal-book-info-small {
     display: none;
 }
 
-.modal-book-title-small > h2 {
+.modal-book-title-small {
     color: #000;
     font-size: 16px;
 }
 
-.modal-book-title-small > h5 {
+.modal-book-author-small {
   color: #000;
   margin-top: 4px;
   font-size: 12px;
@@ -126,11 +127,11 @@ export default {
     margin: 10px;
   }
 
-  .modal-book-title-big {
+  .modal-book-info-big {
     display: block;
   }
 
-  .modal-book-title-small {
+  .modal-book-info-small {
     display: none;
   }
 
@@ -146,11 +147,11 @@ export default {
     flex-direction: column;
     justify-content: center;
   }
-  .modal-book-title-big {
+  .modal-book-info-big {
     display: none;
   }
 
-  .modal-book-title-small {
+  .modal-book-info-small {
     display: block;
   }
 
@@ -160,7 +161,7 @@ export default {
   }
 
   .modal-book-detail {
-    margin-top: 11px;
+    margin-top: 12px;
   }
 
   .modal-image-wrapper > a {
