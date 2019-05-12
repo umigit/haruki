@@ -83,10 +83,14 @@ export default {
   margin-left: 20px;
 }
 
-.modal-book-content > h5 {
+.modal-book-title-big > h5 {
   margin-top: 10px;
   padding-bottom: 10px;
   border-bottom: 1px solid gray;
+}
+
+.modal-book-title-big > h2, h5 {
+  color: #000;
 }
 
 .modal-book-title-small {
