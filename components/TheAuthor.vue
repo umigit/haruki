@@ -27,6 +27,10 @@ export default {
 .author-info > h2 {
   text-align: center;
 }
+
+.author-info > p {
+  color: #000;
+}
 .author-image {
   width: 100%;
 }
