@@ -84,7 +84,6 @@ export default {
 .main {
   box-sizing: border-box;
   height: calc(100vh - 80px);
-
   padding: 20px 20px;
   overflow: scroll;
 }
@@ -108,6 +107,10 @@ export default {
   background-color: white;
   margin-bottom: 30px;
   padding: 20px;
+}
+
+.article-body > p {
+  color: #000;
 }
 
 .article-image {
@@ -164,7 +167,9 @@ export default {
   h2 {
     font-size: 16px;
   }
-
+  h4 {
+    font-size: 12px;
+  }
   p {
     font-size: 11px;
   }

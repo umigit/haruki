@@ -30,7 +30,7 @@ export default {
 
 <style>
 .carousel-item {
-  background-color: rgba(0,0,0,0.8);
+  background-color: rgba(0,0,0,0.5);
   width: 100%;
   min-height: 300px;
   max-height: 400px;
