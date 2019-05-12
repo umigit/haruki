@@ -94,10 +94,12 @@ export default {
 }
 
 .modal-book-title-small > h2 {
+    color: #000;
     font-size: 16px;
 }
 
 .modal-book-title-small > h5 {
+  color: #000;
   margin-top: 4px;
   font-size: 12px;
 }
