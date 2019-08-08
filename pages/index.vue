@@ -2,15 +2,12 @@
   <section class="container">
     <TheHeader/>
     <div class="main">
+      <!-- <script async defer crossorigin="anonymous" src="https://connect.facebook.net/ja_JP/sdk.js#xfbml=1&version=v4.0&appId=772558586494040&autoLogAppEvents=1"></script> -->
       <div class="main-content">
         <TheBanner :books="banner"/>
         <div class="blog-content">
           <div class="articles">
-            <div v-for="article in articles" :key="article.sys.id" class="article">
-              <h2>{{article.fields.title}}</h2>
-              <img :src="article.fields.images[0].fields.file.url" class="article-image"/>
-              <div v-html="article.fields.body" class="article-body"></div>
-            </div>
+            <div class="fb-page" data-href="https://www.facebook.com/haruki.amanuma" data-tabs="timeline" data-width="500" data-height="200" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"></div>
           </div>
           <div class="sidebar">
             <TheAuthor :author="author"/>
@@ -27,6 +24,13 @@ import TheBanner from '~/components/TheBanner'
 import TheAuthor from '~/components/TheAuthor'
 import { documentToHtmlString } from '@contentful/rich-text-html-renderer'
 import client from '~/plugins/contentful'
+
+const script = document.createElement("script");
+script.src = "https://connect.facebook.net/ja_JP/sdk.js#xfbml=1&version=v4.0&appId=772558586494040&autoLogAppEvents=1";
+script.async = true;
+script .defer = true;
+script.crossorigin = "anonymous";
+document.head.appendChild(script);
 
 export default {
   components: {
@@ -120,6 +124,11 @@ export default {
 
 .article-body {
   margin-top: 20px;
+}
+
+.sidebar {
+  position: sticky;
+  top: 0;
 }
 
 @media screen and (max-width: 1024px) {
