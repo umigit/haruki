@@ -1,5 +1,5 @@
 <template>
-  <div class="modal">
+  <div class="book-modal">
     <div class="modal-mask" @click="$emit('close')">
       <div class="modal-body" @click.stop>
         <button @click="$emit('close')" class="modal-close-button">×</button>
@@ -48,14 +48,14 @@ export default {
   padding: 20px;
 }
 
-.modal-body {
+.book-modal .modal-body {
   background-color: #fff;
   width: 800px;
   padding: 40px;
   position: relative;
 }
 
-.modal-close-button {
+.book-modal .modal-close-button {
   background-color: #fff;
   border: none;
   font-size: 30px;
@@ -65,16 +65,16 @@ export default {
   right: 5px;
 }
 
-.modal-content-wrapper {
+.book-modal .modal-content-wrapper {
   height: 100%;
   display: flex;
 }
 
-.modal-image-wrapper {
+.book-modal .modal-image-wrapper {
   text-align: center;
 }
 
-.modal-book-image {
+.book-modal .modal-book-image {
   max-height: 300px;
   margin: 20px;
 }
@@ -118,20 +118,20 @@ export default {
 }
 
 @media screen and (max-width: 896px) {
-  .modal-body {
+  .book-modal .modal-body {
     width: 100%;
   }
 
-  .modal-book-image {
+  .book-modal .modal-book-image {
     max-height: 180px;
     margin: 10px;
   }
 
-  .modal-book-info-big {
+  .book-modal .modal-book-info-big {
     display: block;
   }
 
-  .modal-book-info-small {
+  .book-modal .modal-book-info-small {
     display: none;
   }
 
@@ -139,15 +139,15 @@ export default {
 }
 
 @media screen and (max-width: 480px) {
-  .modal-mask {
+  .book-modal .modal-mask {
     padding: 10px;
   }
 
-  .modal-content-wrapper {
+  .book-modal .modal-content-wrapper {
     flex-direction: column;
     justify-content: center;
   }
-  .modal-book-info-big {
+  .book-modal .modal-book-info-big {
     display: none;
   }
 
@@ -164,7 +164,7 @@ export default {
     margin-top: 12px;
   }
 
-  .modal-image-wrapper > a {
+  .book-modal .modal-image-wrapper > a {
     display: block;
   }
 }
