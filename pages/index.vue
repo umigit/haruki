@@ -6,11 +6,14 @@
       <div class="main-content">
         <TheBanner :books="banner"/>
         <div class="blog-content">
+
           <div class="articles">
-            <div class="fb-page" data-href="https://www.facebook.com/haruki.amanuma" data-tabs="timeline" data-width="500" data-height="200" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"></div>
+            <!-- <div class="fb-page" data-href="https://www.facebook.com/haruki.amanuma" data-tabs="timeline" data-width="500" data-height="200" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"></div> -->
           </div>
           <div class="sidebar">
             <TheAuthor :author="author"/>
+            <div class="fb-page" data-href="https://www.facebook.com/facebook" data-tabs="timeline" data-width="300" data-height="500" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/facebook" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/facebook">Facebook</a></blockquote></div>
+
           </div>
         </div>
       </div>
@@ -30,7 +33,7 @@ script.src = "https://connect.facebook.net/ja_JP/sdk.js#xfbml=1&version=v4.0&app
 script.async = true;
 script .defer = true;
 script.crossorigin = "anonymous";
-document.head.appendChild(script);
+document.body.insertBefore(script, document.body.firstChild);
 
 export default {
   components: {
@@ -99,11 +102,13 @@ export default {
 
 .blog-content {
   display: flex;
+  justify-content: center;
   margin-top: 20px;
 }
 
 .articles {
   width: 100%;
+  /* max-width: 500px; */
   margin-right: 40px;
   padding: 0;
 }
@@ -127,13 +132,16 @@ export default {
 }
 
 .sidebar {
-  position: sticky;
-  top: 0;
+  position: relative;
+}
+
+.author {
+  margin-bottom: 20px;
 }
 
 @media screen and (max-width: 1024px) {
   .main-content {
-    width: 800px;
+    width: 840px;
   }
 }
 
@@ -147,7 +155,7 @@ export default {
   }
 
   .articles {
-    margin-right: 0;
+    margin: 0 auto;
     margin-top: 20px;
   }
 }
