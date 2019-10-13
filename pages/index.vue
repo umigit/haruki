@@ -112,7 +112,7 @@ export default {
 
 <style>
 .container {
-  height: 100vh;
+  height: 100%;
   background-image: url('~assets/images/airship.jpg');
   background-size: cover;
   background-position: center center;
@@ -121,16 +121,18 @@ export default {
 }
 
 .main {
-  max-width: 960px;
+  width: 100%;
   box-sizing: border-box;
   height: calc(100vh - 80px);
   margin: 0 auto;
-  padding: 20px 20px;
+  padding: 20px 0px;
   overflow: scroll;
 }
 
 .main-content {
   width: 100%;
+  max-width: 940px;
+  margin: 0 auto;
 
 }
 
@@ -192,6 +194,7 @@ export default {
 @media screen and (max-width: 960px) {
   .main-content {
     width: 100%;
+    padding: 0 10px;
   }
 
   .blog-content {
