@@ -37,7 +37,9 @@ export default {
 }
 
 .image-modal .modal-body {
-  height: 100%;
+  width: 800px;
+  height: auto;
+  max-height: 100%;
   max-width: 100%;
   max-height: 100%;
   background-color: #fff;
@@ -57,13 +59,11 @@ export default {
 
 .image-modal .modal-content-wrapper {
   max-width: 100%;
-  height: 100%;
   display: flex;
 }
 
 .image-modal .modal-image-wrapper {
   max-width: 100%;
-  height: 100%;
 }
 
 .image-modal .modal-image {
@@ -72,17 +72,13 @@ export default {
   object-fit: contain;
 }
 
-@media screen and (max-width: 1024px) {
-
-}
-
-@media screen and (max-width: 896px) {
+@media screen and (max-width: 960px) {
   .image-modal .modal-body {
     width: 100%;
   }
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 560px) {
   .image-modal .modal-mask {
     padding: 10px;
   }
