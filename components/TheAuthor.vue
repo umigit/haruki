@@ -21,7 +21,6 @@ export default {
   background-color: white;
   width: 300px;
   padding: 15px;
-
 }
 
 .author-info > h2 {
@@ -40,6 +39,7 @@ export default {
     width: 100%;
     display: flex;
     align-items: center;
+    position: static;
   }
 
   .author-image {

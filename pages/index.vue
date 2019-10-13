@@ -1,16 +1,25 @@
 <template>
   <section class="container">
+    <ImageModal :image="clickedImage" v-if="showModal" @close="closeModal()"/>
     <TheHeader/>
     <div class="main">
-      <!-- <script async defer crossorigin="anonymous" src="https://connect.facebook.net/ja_JP/sdk.js#xfbml=1&version=v4.0&appId=772558586494040&autoLogAppEvents=1"></script> -->
       <div class="main-content">
         <TheBanner :books="banner"/>
         <div class="blog-content">
           <div class="articles">
-            <div class="fb-page" data-href="https://www.facebook.com/haruki.amanuma" data-tabs="timeline" data-width="500" data-height="200" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"></div>
+            <div v-for="article in articles" :key="article.sys.id" class="article">
+              <div class="article-header">
+                <h2 class="article-title">{{article.fields.title}}</h2>
+                <h5 class="article-date">{{article.sys.createdAt}}</h5>
+              </div>
+              <hr/>
+              <div v-html="article.fields.body" class="article-body"></div>
+              <img :src="article.fields.images[0].fields.file.url" class="article-image" @click="openModal(article.fields.images[0].fields.file.url)"/>
+            </div>
           </div>
           <div class="sidebar">
             <TheAuthor :author="author"/>
+            <!-- <div class="fb-page" data-href="https://www.facebook.com/facebook" data-tabs="timeline" data-width="300" data-height="500" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="false"><blockquote cite="https://www.facebook.com/facebook" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/facebook">Facebook</a></blockquote></div> -->
           </div>
         </div>
       </div>
@@ -22,21 +31,28 @@
 import TheHeader from '~/components/TheHeader'
 import TheBanner from '~/components/TheBanner'
 import TheAuthor from '~/components/TheAuthor'
+import ImageModal from '~/components/ImageModal'
 import { documentToHtmlString } from '@contentful/rich-text-html-renderer'
 import client from '~/plugins/contentful'
 
-const script = document.createElement("script");
-script.src = "https://connect.facebook.net/ja_JP/sdk.js#xfbml=1&version=v4.0&appId=772558586494040&autoLogAppEvents=1";
-script.async = true;
-script .defer = true;
-script.crossorigin = "anonymous";
-document.head.appendChild(script);
+// const script = document.createElement("script");
+// script.src = "https://connect.facebook.net/ja_JP/sdk.js#xfbml=1&version=v4.0&appId=772558586494040&autoLogAppEvents=1";
+// script.async = false;
+// script.defer = true;
+// script.crossorigin = "anonymous";
+// document.body.insertBefore(script, document.body.firstChild);
+
+const formatDate = function (date) {
+  const date_array = date.toString().split(/[-T.]/)
+  return date_array[0] + '年' + Number(date_array[1]).toString() + '月' + Number(date_array[2]).toString() + '日'
+}
 
 export default {
   components: {
     TheHeader,
     TheBanner,
     TheAuthor,
+    ImageModal,
   },
   async asyncData() {
     return await client.getEntries({ order: '-sys.createdAt' })
@@ -51,6 +67,7 @@ export default {
 
           if (id === 'article') {
             item.fields.body = documentToHtmlString(item.fields.body)
+            item.sys.createdAt = formatDate(item.sys.createdAt)
             articles.push(item)
           }
           else if (id === 'book') {
@@ -72,6 +89,24 @@ export default {
         }
       })
   },
+  data() {
+    return {
+      showModal: false,
+      clickedImage: '',
+    }
+  },
+  methods: {
+    openModal(item) {
+      this.clickedImage = item
+      this.showModal = true
+    },
+    closeModal() {
+      this.showModal = false
+    },
+  },
+  mounted () {
+    // FB.XFBML.parse()
+  }
 }
 </script>
 
@@ -99,6 +134,7 @@ export default {
 
 .blog-content {
   display: flex;
+  justify-content: center;
   margin-top: 20px;
 }
 
@@ -113,13 +149,28 @@ export default {
   padding: 20px;
 }
 
+.article-header {
+  height: 40px;
+  padding: 0 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.article-date {
+  color: black;
+  margin-top: auto;
+  padding-bottom: 10px;
+}
+
 .article-body > p {
   color: #000;
 }
 
 .article-image {
   width: 100%;
+  max-height: 300px;
   margin-top: 20px;
+  object-fit: cover;
 }
 
 .article-body {
@@ -127,13 +178,18 @@ export default {
 }
 
 .sidebar {
+  position: relative;
+}
+
+.author {
+  margin-bottom: 20px;
   position: sticky;
   top: 0;
 }
 
 @media screen and (max-width: 1024px) {
   .main-content {
-    width: 800px;
+    width: 840px;
   }
 }
 
@@ -147,7 +203,7 @@ export default {
   }
 
   .articles {
-    margin-right: 0;
+    margin: 0 auto;
     margin-top: 20px;
   }
 }
