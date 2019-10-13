@@ -10,7 +10,7 @@
           </div>
           <div class="modal-image-wrapper">
             <img :src="item.fields.image.fields.file.url" class="modal-book-image"/>
-            <a :href="item.fields.link">Amazonで開く</a>
+            <a :href="item.fields.link" target="_blank">Amazonで開く</a>
           </div>
           <div class="modal-book-content">
             <div class="modal-book-info-big">
