@@ -7,7 +7,7 @@
           <h2 class="book-title">{{book.fields.title}}</h2>
           <h5 class="book-author">{{book.fields.author}}</h5>
           <div class="book-detail">{{book.fields.detail}}</div>
-          <a :href="book.fields.link">Amazonで開く</a>
+          <a :href="book.fields.link" target="_blank">Amazonで開く</a>
         </div>
       </slide>
     </carousel>
