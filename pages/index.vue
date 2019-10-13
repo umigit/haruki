@@ -19,7 +19,7 @@
           </div>
           <div class="sidebar">
             <TheAuthor :author="author"/>
-            <div class="fb-page" data-href="https://www.facebook.com/facebook" data-tabs="timeline" data-width="300" data-height="500" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/facebook" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/facebook">Facebook</a></blockquote></div>
+            <!-- <div class="fb-page" data-href="https://www.facebook.com/facebook" data-tabs="timeline" data-width="300" data-height="500" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="false"><blockquote cite="https://www.facebook.com/facebook" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/facebook">Facebook</a></blockquote></div> -->
           </div>
         </div>
       </div>
@@ -35,12 +35,12 @@ import ImageModal from '~/components/ImageModal'
 import { documentToHtmlString } from '@contentful/rich-text-html-renderer'
 import client from '~/plugins/contentful'
 
-const script = document.createElement("script");
-script.src = "https://connect.facebook.net/ja_JP/sdk.js#xfbml=1&version=v4.0&appId=772558586494040&autoLogAppEvents=1";
-script.async = true;
-script .defer = true;
-script.crossorigin = "anonymous";
-document.body.insertBefore(script, document.body.firstChild);
+// const script = document.createElement("script");
+// script.src = "https://connect.facebook.net/ja_JP/sdk.js#xfbml=1&version=v4.0&appId=772558586494040&autoLogAppEvents=1";
+// script.async = false;
+// script.defer = true;
+// script.crossorigin = "anonymous";
+// document.body.insertBefore(script, document.body.firstChild);
 
 const formatDate = function (date) {
   const date_array = date.toString().split(/[-T.]/)
@@ -97,13 +97,16 @@ export default {
   },
   methods: {
     openModal(item) {
-      this.clickedImage = item;
-      this.showModal = true;
+      this.clickedImage = item
+      this.showModal = true
     },
     closeModal() {
-      this.showModal = false;
+      this.showModal = false
     },
   },
+  mounted () {
+    // FB.XFBML.parse()
+  }
 }
 </script>
 
@@ -137,7 +140,6 @@ export default {
 
 .articles {
   width: 100%;
-  /* max-width: 500px; */
   margin-right: 40px;
   padding: 0;
 }
@@ -152,9 +154,6 @@ export default {
   padding: 0 10px;
   display: flex;
   justify-content: space-between;
-}
-
-.article-title {
 }
 
 .article-date {
@@ -184,6 +183,8 @@ export default {
 
 .author {
   margin-bottom: 20px;
+  position: sticky;
+  top: 0;
 }
 
 @media screen and (max-width: 1024px) {
