@@ -34,7 +34,7 @@ export default {
   width: 100%;
 }
 
-@media screen and (max-width: 896px) {
+@media screen and (max-width: 960px) {
   .author {
     width: 100%;
     display: flex;
@@ -55,7 +55,7 @@ export default {
   }
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 560px) {
   .author-image {
     width: 100px;
     height: 100px;

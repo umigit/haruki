@@ -4,8 +4,8 @@
       <slide v-for="book in books" :key="book.sys.id" class="carousel-item">
         <img :src="book.fields.image.fields.file.url" class="carousel-book-image"/>
         <div class="book-content">
-          <h2>{{book.fields.title}}</h2>
-          <h5>{{book.fields.author}}</h5>
+          <h2 class="book-title">{{book.fields.title}}</h2>
+          <h5 class="book-author">{{book.fields.author}}</h5>
           <div class="book-detail">{{book.fields.detail}}</div>
           <a :href="book.fields.link">Amazonで開く</a>
         </div>
@@ -72,13 +72,22 @@ export default {
   transform: translate(0%, -50%) !important;
 }
 
-@media screen and (max-width: 896px) {
+@media screen and (max-width: 960px) {
   .carousel-book-image {
-    width: 150px;
+    width: 25%;
+    max-width: 150px;
+  }
+
+  .book-title {
+    font-size: 16px;
+  }
+
+  .book-detail {
+    font-size: 14px;
   }
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 560px) {
   .banner {
     display: none;
   }

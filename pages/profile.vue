@@ -83,11 +83,7 @@ export default {
   color: #fff;
 }
 
-@media screen and (max-width: 1024px) {
-
-}
-
-@media screen and (max-width: 896px) {
+@media screen and (max-width: 960px) {
   .profile {
     width: 100%;
   }
@@ -111,7 +107,7 @@ export default {
   }
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 560px) {
   .profile-body {
     padding: 20px 40px;
   }

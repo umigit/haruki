@@ -112,7 +112,7 @@ export default {
 
 <style>
 .container {
-  height: 100vh;
+  height: 100%;
   background-image: url('~assets/images/airship.jpg');
   background-size: cover;
   background-position: center center;
@@ -121,15 +121,19 @@ export default {
 }
 
 .main {
+  width: 100%;
   box-sizing: border-box;
   height: calc(100vh - 80px);
-  padding: 20px 20px;
+  margin: 0 auto;
+  padding: 20px 0px;
   overflow: scroll;
 }
 
 .main-content {
-  width: 1020px;
+  width: 100%;
+  max-width: 940px;
   margin: 0 auto;
+
 }
 
 .blog-content {
@@ -187,15 +191,10 @@ export default {
   top: 0;
 }
 
-@media screen and (max-width: 1024px) {
-  .main-content {
-    width: 840px;
-  }
-}
-
-@media screen and (max-width: 896px) {
+@media screen and (max-width: 960px) {
   .main-content {
     width: 100%;
+    padding: 0 10px;
   }
 
   .blog-content {
@@ -206,9 +205,13 @@ export default {
     margin: 0 auto;
     margin-top: 20px;
   }
+
+  .author {
+    margin-bottom: 0;
+  }
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 560px) {
   .container {
     padding-top: 60px;
   }
