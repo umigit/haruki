@@ -121,15 +121,17 @@ export default {
 }
 
 .main {
+  max-width: 960px;
   box-sizing: border-box;
   height: calc(100vh - 80px);
+  margin: 0 auto;
   padding: 20px 20px;
   overflow: scroll;
 }
 
 .main-content {
-  width: 1020px;
-  margin: 0 auto;
+  width: 100%;
+
 }
 
 .blog-content {
@@ -187,13 +189,7 @@ export default {
   top: 0;
 }
 
-@media screen and (max-width: 1024px) {
-  .main-content {
-    width: 840px;
-  }
-}
-
-@media screen and (max-width: 896px) {
+@media screen and (max-width: 960px) {
   .main-content {
     width: 100%;
   }
@@ -206,9 +202,13 @@ export default {
     margin: 0 auto;
     margin-top: 20px;
   }
+
+  .author {
+    margin-bottom: 0;
+  }
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 560px) {
   .container {
     padding-top: 60px;
   }

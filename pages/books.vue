@@ -4,8 +4,8 @@
     <TheHeader/>
     <div class="main">
       <div class="book-list">
-        <div v-for="book in books" :key="book.sys.id" class="book" @click="openModal(book)">
-          <img :src="book.fields.image.fields.file.url" class="book-image"/>
+        <div v-for="book in books" :key="book.sys.id" class="book" >
+          <img :src="book.fields.image.fields.file.url" @click="openModal(book)" class="book-image"/>
         </div>
       </div>
     </div>
@@ -50,45 +50,44 @@ export default {
 
 <style>
 .book-list {
-  width: 1020px;
+  width: 960px;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   flex-wrap: wrap;
   margin: 0 auto;
   padding: 0;
 }
 
 .book {
-  width: 200px;
+  width: 26%;
   margin: 30px;
+}
+
+.book::after{
+  content:"";
+  display: block;
+  width: 26%;
 }
 
 .book-image {
   width: 100%;
+  padding: 0px;
 }
 
-@media screen and (max-width: 1024px) {
- .book-list {
-   width: 800px;
- }
-}
-
-@media screen and (max-width: 896px) {
+@media screen and (max-width: 960px) {
   .book-list {
     width: 100%;
+    max-width: 960px;
   }
 
   .book {
-    width: 150px;
+    margin: 30px 15px;
   }
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 560px) {
   .book {
-    width: 26%;
-    max-width: 100px;
-    min-width: 80px;
-    margin: 10px;
+    margin: 15px 10px;
   }
 }
 </style>
