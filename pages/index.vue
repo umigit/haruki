@@ -14,7 +14,7 @@
               </div>
               <hr/>
               <div v-html="article.fields.body" class="article-body"></div>
-              <img :src="article.fields.images[0].fields.file.url" class="article-image" @click="openModal(article.fields.images[0].fields.file.url)"/>
+              <img :src="article.fields.images[0].fields.file.url + '?w=800'" class="article-image" @click="openModal(article.fields.images[0].fields.file.url)"/>
             </div>
           </div>
           <div class="sidebar">
