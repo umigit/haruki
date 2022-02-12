@@ -1,34 +1,32 @@
-require('dotenv').config()
+require("dotenv").config();
 
 module.exports = {
-  mode: 'spa',
+  mode: "spa",
   /*
-  ** Headers of the page
-  */
+   ** Headers of the page
+   */
   head: {
-    title: 'Haruki',
+    title: "Haruki",
     meta: [
-      { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: 'Haruki&apos;s Page' }
+      { charset: "utf-8" },
+      { name: "viewport", content: "width=device-width, initial-scale=1" },
+      {
+        hid: "description",
+        name: "description",
+        content: "Haruki&apos;s Page",
+      },
     ],
-    link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
-    ]
+    link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
   },
   /*
-  ** Customize the progress bar color
-  */
-  loading: { color: '#3B8070' },
+   ** Customize the progress bar color
+   */
+  loading: { color: "#3B8070" },
   /*
-  ** Build configuration
-  */
-  plugins: [
-    '~/plugins/contentful'
-  ],
-  modules: [
-    '@nuxtjs/dotenv',
-  ],
+   ** Build configuration
+   */
+  plugins: ["~/plugins/contentful"],
+  modules: ["@nuxtjs/dotenv"],
   env: {
     CTF_SPACE_ID: process.env.CTF_SPACE_ID,
     CTF_CDA_ACCESS_TOKEN: process.env.CTF_CDA_ACCESS_TOKEN,
@@ -36,18 +34,17 @@ module.exports = {
   },
   build: {
     /*
-    ** Run ESLint on save
-    */
-    extend (config, { isDev, isClient }) {
+     ** Run ESLint on save
+     */
+    extend(config, { isDev, isClient }) {
       if (isDev && isClient) {
         config.module.rules.push({
-          enforce: 'pre',
+          enforce: "pre",
           test: /\.(js|vue)$/,
-          loader: 'eslint-loader',
-          exclude: /(node_modules)/
-        })
+          exclude: /(node_modules)/,
+        });
       }
-    }
-  }
-}
-
+    },
+  },
+  buildModules: ["@nuxtjs/eslint-module"],
+};
